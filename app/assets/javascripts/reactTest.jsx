@@ -53,11 +53,12 @@ var CommentForm = React.createClass({
     e.preventDefault();
     var author = React.findDOMNode(this.refs.author).value.trim();
     var text = React.findDOMNode(this.refs.text).value.trim();
+    var token = document.getElementsByName("csrfToken")[0].value.trim();
     if (!text || !author) {
       return;
     }
 
-    var commentUrl = "http://localhost:9000/comment?author=" + author + "&text=" + text;
+    var commentUrl = "http://localhost:9000/comment?author=" + author + "&text=" + text + "&csrfToken=" + token;
     $.ajax({
           url: commentUrl,
           method: 'POST',

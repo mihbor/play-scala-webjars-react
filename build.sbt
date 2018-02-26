@@ -4,17 +4,24 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb)
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  cache,
+  guice,
+  ehcache,
   ws,
   specs2 % Test,
-  "org.webjars" %% "webjars-play" % "2.4.0-1",
+  "org.scalatest" %% "scalatest" % "3.0.4" % Test,
   "org.webjars" % "react" % "0.14.0",
   "org.webjars" % "marked" % "0.3.2",
-  "org.webjars" % "jquery" % "2.1.4"
+  "org.webjars" % "jquery" % "2.1.4",
+  "com.typesafe.akka" %% "akka-persistence-typed" % "2.5-SNAPSHOT",
+  "com.typesafe.akka" %% "akka-testkit-typed" % "2.5-SNAPSHOT" % Test,
+  "org.fusesource.leveldbjni"   % "leveldbjni-all"   % "1.8"
+
 )
+dependencyOverrides ++= Set("com.typesafe.akka" %% "akka-actor" % "2.5-SNAPSHOT")
+
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 

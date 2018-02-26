@@ -1,13 +1,16 @@
+@()(implicit request: RequestHeader)
+@import helper._
 <!DOCTYPE html>
 <html>
 <head>
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.fullPath("react", "react.js"))'></script>
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("marked.js"))'></script>
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
+    <script type='text/javascript' src='@routes.Assets.at("lib/react/react.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("lib/marked/marked.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("lib/jquery/jquery.min.js")'></script>
 </head>
 <body>
     <div id="content"></div>
-    <script type='text/javascript' src='@routes.Assets.versioned("javascripts/reactTest.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/reactTest.js")'></script>
+    @CSRF.formField
 </body>
 </html>
 
